@@ -1,0 +1,9 @@
+
+
+It is possible to solve this problem in many ways. One of them was to iterate over all strings in reversed order and to try to leave the longest possible prefix of each string greedily without breaking the statement.
+
+Let's prove this solution formally. Note that the set of possible lengths of some string s i in a correct answer forms a segment between 1 and some critical length l i. Indeed, if there exists a correct answer with i-string having a length of x ≥ 2, then there also exists an answer with i-th string having a length of x - 1, since it is possible to leave only the first symbol of all previous strings and make the answer correct.
+
+Let's express l i through l i + 1. Reduce the length of (i + 1)-st string to l i + 1 and consider two options. First, s i may be lexicographically not greater than s i + 1, and in this case we may obviously let l i be equal to |s i|. Otherwise, l i can't be larger than lcp(s i, s i + 1) where lcp deontes the length of the longest common prefix of two strings (if we keep s i longer, it will be larger than any possible prefix of s i + 1). At the same time, if we reduce s i up to lcp(s i, s i + 1), it will be correct. So, we may let l i be equal to lcp(s i, s i + 1).
+
+Note that due to the way we defined l i, if we just reduce any string up to its maximum possible length, it will also be a correct answer. So, it is also a correct answer to the original problem.
