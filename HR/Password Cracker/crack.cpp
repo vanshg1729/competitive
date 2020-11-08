@@ -11,7 +11,8 @@ int p[maxn] = {} ;
 
 int attempt(int r)
 {
-    if(p[r] or !r) return 1 ;  
+    if(p[r]!=-1) return p[r] ; 
+    p[r] = 0 ; 
     for(int i = 1 ; i<=n ; i++)
     {
         if(a[i].size() > r) continue ; 
@@ -20,13 +21,8 @@ int attempt(int r)
 
         if(b == a[i])
         {
-            if(r-a[i].size()!=0 and p[r-a[i].size()] or r == a[i].size())
-            {
-                p[r] = i ;
-                return 1 ; 
-            }
-
-            if( attempt(r - a[i].size() ) )
+            int c = r-a[i].size() ; 
+            if( attempt(c) )
             {
                 p[r] = i ; 
                 return 1 ; 
@@ -42,8 +38,8 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    freopen("input.txt","r", stdin) ;
-    freopen("output.txt","w",stdout);
+    //freopen("input.txt","r", stdin) ;
+    //freopen("output.txt","w",stdout);
     
     int T ; cin>>T ; 
 
@@ -56,8 +52,9 @@ int main()
         cin>>s ; 
 
         s = " " + s ;  
-        memset(p , 0 , sizeof(p)) ; 
+        memset(p , -1 , sizeof(p)) ; 
 
+        p[0] = 1 ;
         if(attempt(s.size()-1) )
         {
             int i = s.size() -1 ; 
@@ -72,11 +69,13 @@ int main()
 
             while(!ans.empty())
             {
-                cout<<a[ans.top()]<<" " ; 
-                ans.pop() ; 
+                cout<<a[ans.top()] ;
+                ans.pop() ;
+                if(ans.size()) cout<<" " ; 
             }
-            cout<<"\n"; 
         }
-        else cout<<"WRONG PASSWORD"<<"\n" ;          
+        else cout<<"WRONG PASSWORD" ;
+
+        if(T) cout<<"\n" ;           
     }
 }   
