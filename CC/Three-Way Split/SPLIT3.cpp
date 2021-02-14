@@ -5,16 +5,12 @@ using namespace std;
 #define sc second
 typedef long long ll;
 
-struct Edge {
-	int a, b;
-};
-
 const int maxn = 3010;
 
 vector<int> adj[maxn] = {};
 ll sum[maxn] = {};
 bool seen[maxn] = {};
-int n, timer;
+int n, timer = 0;
 int tin[maxn] = {}, tout[maxn] = {};
 
 void dfs(int s) {
@@ -43,14 +39,12 @@ int main()
 	//freopen("output.txt", "w", stdout);
 
 	cin >> n;
-	vector<Edge> edge = {};
 	for (int i = 1; i <= n; i++) cin >> sum[i];
 
 	for (int i = 1; i < n; i++) {
 		int a, b; cin >> a >> b;
 		adj[a].push_back(b);
 		adj[b].push_back(a);
-		edge.push_back({a, b});
 	}
 
 	dfs(1);
@@ -66,37 +60,27 @@ int main()
 
 	ll con[3] = {};
 	ll ans = 1e16;
+	
+	for (int i = 2; i <= n; i++) {
+		for (int j = 2; j < i; j++) {
 
-	for (int i = 0; i < edge.size(); i++) {
-		if (is_ancestor(edge[i].b, edge[i].a)) swap(edge[i].a, edge[i].b);
-	}
+			int a = i, b = j;
+			if (is_ancestor(b, a)) swap(a, b);
 
-	for (int i = 0; i < edge.size(); i++) {
-
-		for (int j = 0; j < i; j++) {
-
-			auto node1 = edge[i];
-			auto node2 = edge[j];
-
-			if (is_ancestor(node1.b, node2.b)) {
-				con[1] = sum[node1.b] - sum[node2.b];
-				con[2] = sum[node2.b];
-				con[0] = sum[1] - sum[node1.b];
-			}
-			else if (is_ancestor(node2.b, node1.b)) {
-				con[1] = sum[node2.b] - sum[node1.b];
-				con[2] = sum[node1.b];
-				con[0] = sum[1] - sum[node2.b];
+			if (is_ancestor(a, b)) {
+				con[1] = sum[a] - sum[b];
+				con[2] = sum[b];
+				con[0] = sum[1] - sum[a];
 			}
 			else {
-				con[1] = sum[node1.b]; con[2] = sum[node2.b];
+				con[1] = sum[a]; con[2] = sum[b];
 				con[0] = sum[1] - con[1] - con[2];
 			}
 
 			ll m = max(con[0], max(con[1], con[2]));
 			ans = min(ans, m);
 		}
-	}	
+	}
 
 	cout << ans;
 }
