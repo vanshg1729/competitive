@@ -17,6 +17,7 @@
 * [Vplanet Coding](https://www.vplanetcoding.com/)
 * [USACO Guide](https://usaco-guide.vercel.app/)
 * [Progvar.fun](https://progvar.fun/)
+- [Vjudge IIITH prog club](https://vjudge.net/group/iiithprogclub)
 
 ### Wiki/Tutorials
 * [CP-Algorithms](https://cp-algorithms.com/)
@@ -31,7 +32,7 @@
 * [NOI.Ph Training Week 4 - DP](https://drive.google.com/file/d/1adcv4t-TqZOxiY36YpMOeujLPBI-xVpl/view) 
  
 ### Courses
-* [MIT 6.006 Intro to Algorithms](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
+- [MIT 6.006 Intro to Algorithms](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
 * [MIT 6.046J Design and Analysis of Algorithms](https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
 * [MIT 6.042J Meth for CS](https://www.youtube.com/playlist?list=PLB7540DEDD482705B)
 * [Competitive Programming Course](https://github.com/SuprDewd/T-414-AFLV)  - Bjarki Ágúst Guðmundsson
